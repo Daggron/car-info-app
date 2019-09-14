@@ -1,10 +1,12 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const redis = require('redis');
 let favicon = require('serve-favicon');
 let bodyparser = require('body-parser');
 let expressSession = require('express-session');
 let index = require('./routes/index');
+
 
 
 app.set("view engine","ejs");
@@ -24,6 +26,7 @@ app.use(expressSession({
 app.use('/',index);
 
 const port = 3000;
+
 
 app.listen(port,()=>{
     console.log(`Server Started on port ${port}`); 
