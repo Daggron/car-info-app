@@ -17,6 +17,8 @@ app.use(bodyparser.urlencoded({extended:false}));
 
 app.use(express.static(path.join(__dirname,'/public')));
 
+
+
 app.use(expressSession({
     secret:"A keyboard cat",
     saveUninitialized:false,
@@ -24,6 +26,16 @@ app.use(expressSession({
 }));
 
 app.use('/',index);
+
+app.use((req,res)=>{
+    res.status(404);
+    res.render('error.ejs');
+});
+
+app.use((error,req,res,next)=>{
+    res.status(500);
+    res.send('Internal server error');
+})
 
 const port = 3000;
 

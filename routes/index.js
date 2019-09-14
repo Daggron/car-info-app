@@ -9,8 +9,10 @@ async function get_data(req,res,next){
 
     try{
 
+    
+        let number = req.body.number.replace(/\s/g , '');
+        await  api.CheckCarRegistrationIndia(number,'Dinchu',(data)=>{
             
-        await  api.CheckCarRegistrationIndia(req.body.number,'Madarchod',(data)=>{
                 console.log('fetching data');
                 req.session.data = data;
                 console.log(data);
@@ -20,16 +22,22 @@ async function get_data(req,res,next){
         });
     }
     catch{
-        res.status(404).redirect('/404');
-    }
+        res.send(404);
+    }  
+   
 
 
 }
 
 function check(req,res,next){
-    client.get(req.body.number,(err,data)=>{
+   
+    let number = req.body.number.replace(/\s/g , '');
+    // console.log(number);
+    client.get(number,(err,data)=>{
 
-        if(err) throw err;
+        if(err){
+            res.status(404);
+        }
 
         if(data !== null){
            
@@ -62,9 +70,6 @@ router.get('/',(req,res)=>{
 
 router.post('/submit',check,get_data);
 
-router.get('/404',(req,res)=>{
-    res.render('error.ejs');
-})
 
 const redis_port = 6379;
 
