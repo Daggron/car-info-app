@@ -5,7 +5,7 @@ App to provide vehicle registration details with plate number as input.
   App using node js and redis.
   
   <br>
-  Search any car in india by its number plate. 
+  Search any car in india by its number plate to get details 
   
 </p>
 
