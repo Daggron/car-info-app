@@ -1,14 +1,14 @@
 # car-info-app
-An app which provide info of vehicle by using its registration number
+App to provide vehicle registration details with plate number as input.
 
 <p>
-  An app made with node js and redis to give the information of the cars and vehicles in india
+  App using node js and redis.
   
   <br>
-  Search any car in india by its number 
+  Search any car in india by its number plate. 
   
 </p>
 
 <a hre="https://car-info-india.herokuapp.com/">
-  View Demo
+  View in Action
  </a>
